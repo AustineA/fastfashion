@@ -1,0 +1,7 @@
+{
+  "name": "mobo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

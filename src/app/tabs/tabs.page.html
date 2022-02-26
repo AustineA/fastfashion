@@ -2,30 +2,42 @@
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="store">
       <ion-icon
+        [color]="currentTab == 'store' ? 'text' : 'gray'"
         [name]="currentTab == 'store' ? 'home' : 'home-outline'"
       ></ion-icon>
-      <ion-label>Store</ion-label>
+      <ion-label [color]="currentTab == 'store' ? 'text' : 'gray'"
+        >Store</ion-label
+      >
     </ion-tab-button>
 
     <ion-tab-button tab="inbox">
       <ion-icon
+        [color]="currentTab == 'inbox' ? 'text' : 'gray'"
         [name]="currentTab == 'inbox' ? 'mail' : 'mail-outline'"
       ></ion-icon>
-      <ion-label>Inbox</ion-label>
+      <ion-label [color]="currentTab == 'inbox' ? 'text' : 'gray'"
+        >Inbox</ion-label
+      >
     </ion-tab-button>
 
     <ion-tab-button tab="wishlist">
       <ion-icon
+        [color]="currentTab == 'wishlist' ? 'text' : 'gray'"
         [name]="currentTab == 'wishlist' ? 'heart' : 'heart-outline'"
       ></ion-icon>
-      <ion-label>Wishlist</ion-label>
+      <ion-label [color]="currentTab == 'wishlist' ? 'text' : 'gray'"
+        >Wishlist</ion-label
+      >
     </ion-tab-button>
 
     <ion-tab-button tab="account">
       <ion-icon
+        [color]="currentTab == 'account' ? 'text' : 'gray'"
         [name]="currentTab == 'account' ? 'person' : 'person-outline'"
       ></ion-icon>
-      <ion-label>Account</ion-label>
+      <ion-label [color]="currentTab == 'account' ? 'text' : 'gray'"
+        >Account</ion-label
+      >
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>

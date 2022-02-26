@@ -1,1 +1,13 @@
+ion-icon {
+  font-size: 20px;
+}
 
+ion-label {
+  font-size: 14px;
+}
+
+ion-tab-button.tab-selected {
+  ion-icon {
+    color: var(--ion-color-text);
+  }
+}

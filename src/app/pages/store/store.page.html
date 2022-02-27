@@ -13,4 +13,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="appbg" [fullscreen]="true"> </ion-content>
+<ion-content color="appbg" [fullscreen]="true" class="ion-padding">
+  <section>
+    <swiper [config]="config" (slideChange)="onSlideChange($event)">
+      <ng-template swiperSlide>
+        <img src="../../../assets/images/slider3.jpg" class="mobo-slider" />
+      </ng-template>
+      <ng-template swiperSlide>
+        <img src="../../../assets/images/slider1.jpg" class="mobo-slider" />
+      </ng-template>
+      <ng-template swiperSlide>
+        <img src="../../../assets/images/slider2.jpg" class="mobo-slider" />
+      </ng-template>
+    </swiper>
+  </section>
+</ion-content>

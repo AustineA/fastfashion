@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { StorePageRoutingModule } from './store-routing.module';
+import { SwiperModule } from 'swiper/angular';
 
 import { StorePage } from './store.page';
 
@@ -13,8 +14,9 @@ import { StorePage } from './store.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    StorePageRoutingModule
+    StorePageRoutingModule,
+    SwiperModule,
   ],
-  declarations: [StorePage]
+  declarations: [StorePage],
 })
 export class StorePageModule {}

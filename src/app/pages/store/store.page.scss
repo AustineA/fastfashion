@@ -12,3 +12,23 @@ ion-toolbar {
 .mobo-slider {
   border-radius: 20px;
 }
+
+ion-button {
+  --border-radius: 30px;
+  // --box-shadow: none;
+  --padding-end: 20px;
+  --padding-start: 20px;
+  text-transform: capitalize;
+  margin-right: 10px;
+}
+
+.chips {
+  margin: 10px 0;
+  overflow-x: scroll;
+  display: flex;
+  scrollbar-width: none;
+}
+
+.chips::-webkit-scrollbar {
+  display: none;
+}

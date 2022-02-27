@@ -11,6 +11,15 @@ export class StorePage implements OnInit {
     pagination: { clickable: true },
   };
 
+  categories = [
+    'all',
+    'agbada',
+    'ankara',
+    'kaftan',
+    'pants',
+    'jackets',
+    'shirts',
+  ];
   constructor() {}
 
   ngOnInit() {

@@ -27,4 +27,16 @@
       </ng-template>
     </swiper>
   </section>
+
+  <section>
+    <div class="chips">
+      <ion-button
+        *ngFor="let category of categories; let i = index"
+        mode="ios"
+        [color]="i == 0 ? 'activechip' : 'chip'"
+      >
+        <ion-label>{{category}}</ion-label>
+      </ion-button>
+    </div>
+  </section>
 </ion-content>

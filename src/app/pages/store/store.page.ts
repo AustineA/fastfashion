@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import SwiperCore, { Pagination, SwiperOptions } from 'swiper';
+import SwiperCore, { Pagination, SwiperOptions, Autoplay } from 'swiper';
 import { categories, slides, products } from 'src/app/services/data/data';
 @Component({
   selector: 'app-store',
@@ -9,6 +9,9 @@ import { categories, slides, products } from 'src/app/services/data/data';
 export class StorePage implements OnInit {
   config: SwiperOptions = {
     pagination: { clickable: true },
+    // autoplay: {
+    //   delay: 5000,
+    // },
   };
 
   categories = [];
@@ -22,7 +25,7 @@ export class StorePage implements OnInit {
   }
 
   ngOnInit() {
-    SwiperCore.use([Pagination]);
+    SwiperCore.use([Pagination, Autoplay]);
   }
 
   onSlideChange([Swiper]) {

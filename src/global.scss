@@ -32,12 +32,12 @@
 
 ion-tab-bar {
   position: relative;
-  width: 92%;
+  width: 90%;
   transform: translate(-50%, -50%);
   left: 50%;
   border-radius: 30px;
   padding-bottom: 0;
-  --background: var(--ion-color-nav-background);
+  --background: transparent;
   backdrop-filter: blur(80px);
   border: 1px solid var(--nav-stroke);
   height: 80px;

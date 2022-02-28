@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import SwiperCore, { Pagination, SwiperOptions } from 'swiper';
-
+import { categories, slides, products } from 'src/app/services/data/data';
 @Component({
   selector: 'app-store',
   templateUrl: './store.page.html',
@@ -11,16 +11,15 @@ export class StorePage implements OnInit {
     pagination: { clickable: true },
   };
 
-  categories = [
-    'all',
-    'agbada',
-    'ankara',
-    'kaftan',
-    'pants',
-    'jackets',
-    'shirts',
-  ];
-  constructor() {}
+  categories = [];
+  slides = [];
+  products = [];
+
+  constructor() {
+    this.categories = categories;
+    this.slides = slides;
+    this.products = products;
+  }
 
   ngOnInit() {
     SwiperCore.use([Pagination]);

@@ -15,15 +15,13 @@
 
 <ion-content color="appbg" [fullscreen]="true" class="ion-padding">
   <section>
-    <swiper [config]="config" (slideChange)="onSlideChange($event)">
-      <ng-template swiperSlide>
-        <img src="../../../assets/images/slider3.jpg" class="mobo-slider" />
-      </ng-template>
-      <ng-template swiperSlide>
-        <img src="../../../assets/images/slider1.jpg" class="mobo-slider" />
-      </ng-template>
-      <ng-template swiperSlide>
-        <img src="../../../assets/images/slider2.jpg" class="mobo-slider" />
+    <swiper
+      [config]="config"
+      (slideChange)="onSlideChange($event)"
+      class="mobo-slider"
+    >
+      <ng-template swiperSlide *ngFor="let slide of slides">
+        <img [src]="slide.image" />
       </ng-template>
     </swiper>
   </section>
@@ -38,5 +36,25 @@
         <ion-label>{{category}}</ion-label>
       </ion-button>
     </div>
+  </section>
+
+  <section>
+    <ion-grid>
+      <ion-row>
+        <ion-col
+          size-xs="6"
+          size-sm="6"
+          size-md="3"
+          size-lg="2"
+          *ngFor="let product of products"
+        >
+          <div
+            [style.background-image]="'url(' + product?.featured_image + ')'"
+            class="featured_image"
+          ></div>
+          <!-- <img [src]="product?.featured_image" class="featured_image" /> -->
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </section>
 </ion-content>

@@ -11,15 +11,10 @@ ion-toolbar {
 
 .mobo-slider {
   border-radius: 20px;
-}
 
-ion-button {
-  --border-radius: 30px;
-  // --box-shadow: none;
-  --padding-end: 20px;
-  --padding-start: 20px;
-  text-transform: capitalize;
-  margin-right: 10px;
+  img {
+    margin-bottom: -4px;
+  }
 }
 
 .chips {
@@ -27,8 +22,28 @@ ion-button {
   overflow-x: scroll;
   display: flex;
   scrollbar-width: none;
+
+  ion-button {
+    --border-radius: 30px;
+    --padding-end: 20px;
+    --padding-start: 20px;
+    text-transform: capitalize;
+    margin-right: 10px;
+  }
 }
 
 .chips::-webkit-scrollbar {
   display: none;
+}
+
+ion-grid {
+  padding: 0;
+}
+
+.featured_image {
+  min-height: 200px;
+  min-width: 165px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 20px;
 }

@@ -31,7 +31,8 @@
       <ion-button
         *ngFor="let category of categories; let i = index"
         mode="ios"
-        [color]="i == 0 ? 'activechip' : 'chip'"
+        [color]="i == activeIndex ? 'activechip' : 'chip'"
+        (click)="setIndex(i)"
       >
         <ion-label>{{category}}</ion-label>
       </ion-button>
@@ -51,6 +52,7 @@
           <div
             [style.background-image]="'url(' + product?.featured_image + ')'"
             class="featured_image"
+            (click)="goTo(product?.link)"
           ></div>
           <!-- <img [src]="product?.featured_image" class="featured_image" /> -->
         </ion-col>

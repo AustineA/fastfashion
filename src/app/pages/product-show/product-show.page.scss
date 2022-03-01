@@ -1,0 +1,51 @@
+.slide-holder {
+  position: relative;
+
+  .back-btn {
+    position: absolute;
+    top: 3em;
+    left: 1em;
+    z-index: 5;
+    width: 3em;
+    height: 3em;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: var(--ion-color-appbg);
+  }
+}
+
+.swiper-pagination {
+  padding-top: 20px;
+}
+
+.meta {
+  background-color: var(--ion-color-appbg);
+  min-height: 200px;
+  margin-top: -3em;
+  z-index: 3;
+  position: relative;
+  border-radius: 3em 3em 0 0;
+}
+ion-label {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.title {
+}
+.price {
+  display: flex;
+  justify-content: flex-end;
+  color: var(--ion-color-gray);
+
+  ion-label {
+    font-size: 1.3em;
+  }
+}
+
+ion-radio {
+  margin-right: 10px;
+}

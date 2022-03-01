@@ -18,31 +18,37 @@ export const products = [
     featured_image: '../../../assets/images/product1.jpeg',
     title: '',
     retail_price: '',
+    link: 'product-show',
   },
   {
     featured_image: '../../../assets/images/product2.jpeg',
     title: '',
     retail_price: '',
+    link: 'product-show',
   },
   {
     featured_image: '../../../assets/images/product3.jpeg',
     title: '',
     retail_price: '',
+    link: 'product-show',
   },
   {
     featured_image: '../../../assets/images/product4.jpeg',
     title: '',
     retail_price: '',
+    link: 'product-show',
   },
   {
     featured_image: '../../../assets/images/product5.jpeg',
     title: '',
     retail_price: '',
+    link: 'product-show',
   },
   {
     featured_image: '../../../assets/images/product6.jpeg',
     title: '',
     retail_price: '',
+    link: 'product-show',
   },
 ];
 

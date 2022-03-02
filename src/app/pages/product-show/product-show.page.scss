@@ -1,8 +1,8 @@
 .slide-holder {
-  position: relative;
+  //   position: relative;
 
   .back-btn {
-    position: absolute;
+    position: fixed;
     top: 3em;
     left: 1em;
     z-index: 5;
@@ -13,7 +13,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    background-color: var(--ion-color-appbg);
+    background-color: var(--transparent-bg);
   }
 }
 
@@ -34,8 +34,20 @@ ion-label {
   font-weight: bold;
 }
 
-.title {
+.col-right {
+  ion-button {
+    text-transform: uppercase;
+    font-size: 0.6em;
+    margin-right: 8px;
+    margin-top: 0;
+    --padding-top: 0.8em;
+    --padding-bottom: 0.8em;
+    ion-label {
+      font-weight: 500;
+    }
+  }
 }
+
 .price {
   display: flex;
   justify-content: flex-end;
@@ -48,4 +60,52 @@ ion-label {
 
 ion-radio {
   margin-right: 10px;
+}
+
+.col-inner > * {
+  display: block;
+}
+
+.col-right {
+  //   display: flex;
+  //   justify-content: flex-end;
+}
+
+.cart-btn {
+  --padding-top: 1.6em;
+  --padding-bottom: 1.6em;
+  --border-radius: 17px;
+  --padding-end: 2em;
+  --padding-start: 2em;
+
+  ion-label {
+    font-size: 1.1em;
+    text-transform: capitalize;
+  }
+}
+
+.color-size-grid {
+  margin-top: 1.3em;
+}
+
+.qty-cart-grid {
+  margin-top: 0.6em;
+
+  ion-buttons {
+    display: flex;
+    margin-left: -10px;
+  }
+}
+
+.quantity {
+  width: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.desc {
+  margin-top: 1.3em;
+  padding: 0 0.5em;
 }

@@ -24,13 +24,30 @@ export class ProductShowPage implements OnInit {
     { brown: '' },
   ];
 
+  activeIndex = 0;
+  sizes = ['s', 'm', 'l', 'xl'];
+  quantity = 1;
+
   constructor(private router: Router) {}
 
   ngOnInit() {
     SwiperCore.use([Pagination, Autoplay]);
   }
 
+  setIndex(index) {
+    this.activeIndex = index;
+  }
+
   goTo(link) {
     this.router.navigate([link]);
+  }
+
+  increaseQty() {
+    this.quantity = ++this.quantity;
+  }
+
+  decreaseQty() {
+    if (this.quantity == 1) return;
+    this.quantity = --this.quantity;
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import SwiperCore, { Pagination, SwiperOptions, Autoplay } from 'swiper';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { categories, slides, products } from '../../services/data/data';
 
 @Component({
   selector: 'app-product-show',
@@ -8,6 +9,7 @@ import SwiperCore, { Pagination, SwiperOptions, Autoplay } from 'swiper';
   styleUrls: ['./product-show.page.scss'],
 })
 export class ProductShowPage implements OnInit {
+  product: any;
   config: SwiperOptions = {
     pagination: { clickable: true },
     // autoplay: {
@@ -25,13 +27,19 @@ export class ProductShowPage implements OnInit {
   ];
 
   activeIndex = 0;
-  sizes = ['s', 'm', 'l', 'xl'];
   quantity = 1;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
     SwiperCore.use([Pagination, Autoplay]);
+    this.getProduct();
+  }
+
+  getProduct() {
+    const slug = this.route.snapshot.params['slug'];
+    this.product = products.find((item: any) => item?.slug == slug);
+    console.log(this.product);
   }
 
   setIndex(index) {
@@ -49,5 +57,14 @@ export class ProductShowPage implements OnInit {
   decreaseQty() {
     if (this.quantity == 1) return;
     this.quantity = --this.quantity;
+  }
+
+  format(value, currency = 'USD') {
+    return new Intl.NumberFormat('en-US', <any>{
+      style: 'currency',
+      currency: currency,
+      currencySign: 'accounting',
+      signDisplay: 'auto',
+    }).format(value);
   }
 }

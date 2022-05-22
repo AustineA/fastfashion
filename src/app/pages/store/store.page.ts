@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import SwiperCore, { Pagination, SwiperOptions, Autoplay } from 'swiper';
-import { categories, slides, products } from 'src/app/services/data/data';
+import { categories, slides, products } from '../../services/data/data';
 @Component({
   selector: 'app-store',
   templateUrl: './store.page.html',
@@ -24,7 +24,7 @@ export class StorePage implements OnInit {
   constructor(private router: Router) {
     this.categories = categories;
     this.slides = slides;
-    this.products = products;
+    this.products = this.filterByCategory(products);
   }
 
   ngOnInit() {
@@ -39,8 +39,19 @@ export class StorePage implements OnInit {
     this.router.navigate([`/product-show/${slug}`]);
   }
 
-  setIndex(index) {
+  setIndex(index, category) {
     this.activeIndex = index;
+    this.products = this.filterByCategory(products, category);
+  }
+
+  filterByCategory(list, category = 'all') {
+    if (category == 'all') {
+      return list;
+    }
+
+    return list.filter((item) => {
+      return item.category.toLowerCase() == category.toLowerCase();
+    });
   }
 
   format(value, currency = 'USD') {

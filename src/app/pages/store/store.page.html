@@ -32,7 +32,7 @@
         *ngFor="let category of categories; let i = index"
         mode="ios"
         [color]="i == activeIndex ? 'activechip' : 'chip'"
-        (click)="setIndex(i)"
+        (click)="setIndex(i, category)"
       >
         <ion-label>{{category}}</ion-label>
       </ion-button>

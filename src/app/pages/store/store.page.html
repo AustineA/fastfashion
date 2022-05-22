@@ -52,8 +52,13 @@
           <div
             [style.background-image]="'url(' + product?.featured_image + ')'"
             class="featured_image"
-            (click)="goTo(product?.link)"
+            (click)="goTo(product?.slug)"
           ></div>
+          <div class="product-info">
+            <ion-label class="title">{{product?.title}}</ion-label>
+            <ion-label class="price">{{format(product?.price)}}</ion-label>
+          </div>
+
           <!-- <img [src]="product?.featured_image" class="featured_image" /> -->
         </ion-col>
       </ion-row>

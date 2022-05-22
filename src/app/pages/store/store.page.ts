@@ -35,11 +35,20 @@ export class StorePage implements OnInit {
     console.log('slide change', Swiper);
   }
 
-  goTo(link) {
-    this.router.navigate([link]);
+  goTo(slug) {
+    this.router.navigate([`/product-show/${slug}`]);
   }
 
   setIndex(index) {
     this.activeIndex = index;
+  }
+
+  format(value, currency = 'USD') {
+    return new Intl.NumberFormat('en-US', <any>{
+      style: 'currency',
+      currency: currency,
+      currencySign: 'accounting',
+      signDisplay: 'auto',
+    }).format(value);
   }
 }

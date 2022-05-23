@@ -15,7 +15,7 @@ export const slides = [
 
 export const products = [
   {
-    featured_image: '../../../assets/images/product1.jpeg',
+    featuredImage: '../../../assets/images/product1.jpeg',
     title: 'Inceptos Fusce',
     price: 100.99,
     link: 'product-show',
@@ -27,7 +27,7 @@ export const products = [
     category: 'Packs',
   },
   {
-    featured_image: '../../../assets/images/product2.jpeg',
+    featuredImage: '../../../assets/images/product2.jpeg',
     title: 'Etiam Magna',
     price: 85.99,
     link: 'product-show',
@@ -39,7 +39,7 @@ export const products = [
     category: 'Jackets',
   },
   {
-    featured_image: '../../../assets/images/product3.jpeg',
+    featuredImage: '../../../assets/images/product3.jpeg',
     title: 'Sit Vestibulum',
     price: 45.98,
     link: 'product-show',
@@ -52,7 +52,7 @@ export const products = [
   },
 
   {
-    featured_image: '../../../assets/images/product4.jpeg',
+    featuredImage: '../../../assets/images/product4.jpeg',
     title: 'Parturient Commodo',
     price: 120,
     link: 'product-show',
@@ -64,7 +64,7 @@ export const products = [
     category: 'Jackets',
   },
   {
-    featured_image: '../../../assets/images/product5.jpeg',
+    featuredImage: '../../../assets/images/product5.jpeg',
     title: 'Magna Justo',
     price: 237.99,
     link: 'product-show',
@@ -76,7 +76,7 @@ export const products = [
     category: 'Shirts',
   },
   {
-    featured_image: '../../../assets/images/product6.jpeg',
+    featuredImage: '../../../assets/images/product6.jpeg',
     title: 'Vestibulum Cursus',
     price: 260.99,
     link: 'product-show',

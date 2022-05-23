@@ -6,8 +6,9 @@
       <ion-button slot="start">
         <ion-icon name="search-outline"></ion-icon>
       </ion-button>
-      <ion-button slot="end">
+      <ion-button slot="end" (click)="showCart()">
         <ion-icon name="bag-outline"></ion-icon>
+        <span class="cart-badge"> {{cartSize}} </span>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -50,8 +51,8 @@
           *ngFor="let product of products"
         >
           <div
-            [style.background-image]="'url(' + product?.featured_image + ')'"
-            class="featured_image"
+            [style.background-image]="'url(' + product?.featuredImage + ')'"
+            class="featuredImage"
             (click)="goTo(product?.slug)"
           ></div>
           <div class="product-info">
@@ -59,7 +60,7 @@
             <ion-label class="price">{{format(product?.price)}}</ion-label>
           </div>
 
-          <!-- <img [src]="product?.featured_image" class="featured_image" /> -->
+          <!-- <img [src]="product?.featuredImage" class="featuredImage" /> -->
         </ion-col>
       </ion-row>
     </ion-grid>

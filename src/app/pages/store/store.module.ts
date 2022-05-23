@@ -8,6 +8,7 @@ import { StorePageRoutingModule } from './store-routing.module';
 import { SwiperModule } from 'swiper/angular';
 
 import { StorePage } from './store.page';
+import { CartComponent } from '../../components/cart/cart.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { StorePage } from './store.page';
     StorePageRoutingModule,
     SwiperModule,
   ],
-  declarations: [StorePage],
+  declarations: [StorePage, CartComponent],
 })
 export class StorePageModule {}

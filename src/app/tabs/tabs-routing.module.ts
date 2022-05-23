@@ -14,9 +14,9 @@ const routes: Routes = [
           import('../pages/store/store.module').then((m) => m.StorePageModule),
       },
       {
-        path: 'inbox',
+        path: 'order',
         loadChildren: () =>
-          import('../pages/inbox/inbox.module').then((m) => m.InboxPageModule),
+          import('../pages/order/order.module').then((m) => m.OrderPageModule),
       },
       {
         path: 'wishlist',

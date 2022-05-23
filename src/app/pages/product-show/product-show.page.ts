@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import SwiperCore, { Pagination, SwiperOptions, Autoplay } from 'swiper';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { categories, slides, products } from '../../services/data/data';
+import { wishlist, products } from '../../services/data/data';
+import { HelperService } from '../../services/shared/helper.service';
 
 @Component({
   selector: 'app-product-show',
@@ -16,20 +17,17 @@ export class ProductShowPage implements OnInit {
     //   delay: 5000,
     // },
   };
-  color = [
-    { black: '' },
-    { blue: '' },
-    { gray: '' },
-    { red: '' },
-    { white: '' },
-    { yellow: '' },
-    { brown: '' },
-  ];
+  color: string;
+  selectedSize: string;
 
   activeIndex = 0;
   quantity = 1;
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private helper: HelperService
+  ) {}
 
   ngOnInit() {
     SwiperCore.use([Pagination, Autoplay]);
@@ -42,8 +40,8 @@ export class ProductShowPage implements OnInit {
     console.log(this.product);
   }
 
-  setIndex(index) {
-    this.activeIndex = index;
+  setSize(size) {
+    this.selectedSize = size;
   }
 
   goTo(link) {
@@ -52,6 +50,18 @@ export class ProductShowPage implements OnInit {
 
   increaseQty() {
     this.quantity = ++this.quantity;
+  }
+
+  addToFav() {
+    this.product.fav = !this.product?.fav;
+    const message = this.product.fav
+      ? `${this.product.title} added to wishlist`
+      : `${this.product.title} removed to wishlist`;
+
+    const color = this.product.fav ? 'light' : 'warning';
+    this.helper.aToast(message, color);
+
+    wishlist.push(this.product);
   }
 
   decreaseQty() {

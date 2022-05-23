@@ -89,4 +89,6 @@ export const products = [
   },
 ];
 
+export const wishlist = [];
+
 export const categories = ['all', 'jackets', 'packs', 'shirts', 'pants'];

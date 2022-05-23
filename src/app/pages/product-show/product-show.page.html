@@ -10,7 +10,7 @@
 
     <div class="fav-btn">
       <ion-buttons slot="end" mode="md">
-        <ion-button mode="ios" (click)="product.fav = !product.fav">
+        <ion-button mode="ios" (click)="addToFav()">
           <ion-icon [name]="product?.fav? 'heart' : 'heart-outline'"></ion-icon>
         </ion-button>
       </ion-buttons>
@@ -44,7 +44,7 @@
         <ion-col size="6">
           <div class="col-inner">
             <span class="heading-small">Color</span>
-            <ion-radio-group value="black">
+            <ion-radio-group value="red" [(ngModel)]="color">
               <ion-radio value="red" color="danger" mode="md"></ion-radio>
               <ion-radio value="green" color="success" mode="md"></ion-radio>
               <ion-radio value="yellow" color="warning" mode="md"></ion-radio>
@@ -58,8 +58,8 @@
               <ion-button
                 *ngFor="let size of product?.sizes; let i = index"
                 mode="ios"
-                [color]="i == activeIndex ? 'activechip' : 'chip'"
-                (click)="setIndex(i)"
+                [color]="selectedSize == size ? 'activechip' : 'chip'"
+                (click)="setSize(size)"
                 size="small"
               >
                 <ion-label>{{size}}</ion-label>

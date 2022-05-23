@@ -3,6 +3,7 @@ import SwiperCore, { Pagination, SwiperOptions, Autoplay } from 'swiper';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { wishlist, products, cart } from '../../services/data/data';
 import { HelperService } from '../../services/shared/helper.service';
+import { StoreService } from '../../services/shared/store.service';
 
 @Component({
   selector: 'app-product-show',
@@ -25,7 +26,8 @@ export class ProductShowPage implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private helper: HelperService
+    private helper: HelperService,
+    private store: StoreService
   ) {}
 
   ngOnInit() {
@@ -69,8 +71,8 @@ export class ProductShowPage implements OnInit {
     const message = `${this.product.title} added to Cart`;
     this.helper.aToast(message, 'success');
 
-    cart.push(item);
-    console.log(cart);
+    // cart.push(item);
+    this.store.setCart(item);
   }
 
   increaseQty() {

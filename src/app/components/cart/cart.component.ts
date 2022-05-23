@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { cart } from '../../services/data/data';
+import { ModalController } from '@ionic/angular';
+import { StoreService } from '../../services/shared/store.service';
 
 @Component({
   selector: 'app-cart',
@@ -7,25 +9,11 @@ import { cart } from '../../services/data/data';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent implements OnInit {
-  quantity = 1;
-  products = [
-    {
-      category: 'Jackets',
-      color: 'green',
-      description:
-        'Nullam quis risus eget urna mollis ornare vel eu leo. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Maecenas faucibus mollis interdum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur rmus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
-      fav: false,
-      featuredImage: '../../../assets/images/product4.jpeg',
-      link: 'product-show',
-      price: 120,
-      quantity: 2,
-      selectedSize: 'm',
-      sizes: ['m', 'xl'],
-      slug: 'parturient-commodo',
-      title: 'Parturient Commodo',
-    },
-  ];
-  constructor() {}
+  products;
+  constructor(
+    private modalCtrl: ModalController,
+    private store: StoreService
+  ) {}
 
   ngOnInit() {
     this.products = [...this.products, ...cart];
@@ -53,5 +41,9 @@ export class CartComponent implements OnInit {
       currencySign: 'accounting',
       signDisplay: 'auto',
     }).format(value);
+  }
+
+  ionViewDidLeave() {
+    this.store.updateCart(this.products);
   }
 }

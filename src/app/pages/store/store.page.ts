@@ -4,6 +4,7 @@ import { IonRouterOutlet, ModalController } from '@ionic/angular';
 import { CartComponent } from '../../components/cart/cart.component';
 import SwiperCore, { Pagination, SwiperOptions, Autoplay } from 'swiper';
 import { categories, slides, products, cart } from '../../services/data/data';
+import { StoreService } from '../../services/shared/store.service';
 @Component({
   selector: 'app-store',
   templateUrl: './store.page.html',
@@ -22,16 +23,19 @@ export class StorePage implements OnInit {
   products = [];
   activeIndex = 0;
   cartSize: Number;
+  cart = [];
 
   constructor(
     private router: Router,
     private modalCtrl: ModalController,
-    private routerOutlet: IonRouterOutlet
+    private routerOutlet: IonRouterOutlet,
+    private store: StoreService
   ) {
     this.categories = categories;
     this.slides = slides;
     this.products = this.filterByCategory(products);
     this.cartSize = cart.length;
+    this.getCart();
   }
 
   ngOnInit() {
@@ -52,12 +56,22 @@ export class StorePage implements OnInit {
       swipeToClose: true,
       presentingElement: this.routerOutlet.nativeEl,
       mode: 'ios',
+      componentProps: {
+        products: this.cart,
+      },
     });
 
     await modal.present();
 
     const { data } = await modal.onWillDismiss();
     console.log(data);
+  }
+
+  getCart() {
+    this.store.loadCart.subscribe((result) => {
+      this.cart = result;
+      console.log(this.cart, 'CART STORE');
+    });
   }
 
   setIndex(index, category) {

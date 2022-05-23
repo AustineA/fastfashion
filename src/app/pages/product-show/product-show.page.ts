@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import SwiperCore, { Pagination, SwiperOptions, Autoplay } from 'swiper';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { wishlist, products } from '../../services/data/data';
+import { wishlist, products, cart } from '../../services/data/data';
 import { HelperService } from '../../services/shared/helper.service';
 
 @Component({
@@ -20,7 +20,6 @@ export class ProductShowPage implements OnInit {
   color: string;
   selectedSize: string;
 
-  activeIndex = 0;
   quantity = 1;
 
   constructor(
@@ -37,7 +36,6 @@ export class ProductShowPage implements OnInit {
   getProduct() {
     const slug = this.route.snapshot.params['slug'];
     this.product = products.find((item: any) => item?.slug == slug);
-    console.log(this.product);
   }
 
   setSize(size) {
@@ -46,10 +44,6 @@ export class ProductShowPage implements OnInit {
 
   goTo(link) {
     this.router.navigate([link]);
-  }
-
-  increaseQty() {
-    this.quantity = ++this.quantity;
   }
 
   addToFav() {
@@ -62,6 +56,25 @@ export class ProductShowPage implements OnInit {
     this.helper.aToast(message, color);
 
     wishlist.push(this.product);
+  }
+
+  addToCart() {
+    const item = {
+      ...this.product,
+      color: this.color,
+      selectedSize: this.selectedSize,
+      quantity: this.quantity,
+    };
+
+    const message = `${this.product.title} added to Cart`;
+    this.helper.aToast(message, 'success');
+
+    cart.push(item);
+    console.log(cart);
+  }
+
+  increaseQty() {
+    this.quantity = ++this.quantity;
   }
 
   decreaseQty() {

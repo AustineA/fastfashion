@@ -91,4 +91,6 @@ export const products = [
 
 export const wishlist = [];
 
+export const cart = [];
+
 export const categories = ['all', 'jackets', 'packs', 'shirts', 'pants'];

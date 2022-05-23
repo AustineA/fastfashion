@@ -18,7 +18,6 @@ export class HelperService {
       color: color,
     });
     await toast.present();
-    console.log(txt);
   }
 
   async loading(msg) {

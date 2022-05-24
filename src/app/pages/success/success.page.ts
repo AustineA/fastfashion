@@ -37,7 +37,7 @@ export class SuccessPage implements OnInit {
     });
   }
 
-  ionViewWillEnter() {
+  ngAfterViewInit() {
     this.fire();
   }
 }

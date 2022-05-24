@@ -1,5 +1,5 @@
-import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
-import * as confetti from 'canvas-confetti';
+import { Component, OnInit } from '@angular/core';
+import { StoreService } from '../../services/shared/store.service';
 
 @Component({
   selector: 'app-order',
@@ -7,33 +7,25 @@ import * as confetti from 'canvas-confetti';
   styleUrls: ['./order.page.scss'],
 })
 export class OrderPage implements OnInit {
-  constructor(private renderer2: Renderer2, private elementRef: ElementRef) {}
+  products = [];
+  constructor(private store: StoreService) {
+    this.getOrders();
+  }
 
   ngOnInit() {}
 
-  fire() {
-    const canvas = this.renderer2.createElement('canvas');
-
-    this.renderer2.appendChild(this.elementRef.nativeElement, canvas);
-
-    const newConfetti = confetti.create(canvas, {
-      resize: true,
+  getOrders() {
+    this.store.loadWishList.subscribe((result) => {
+      this.products = result;
     });
+  }
 
-    const colors = ['#667FEB', '#ffffff', 'CAA963', '#FF3636', '#8FFF36'];
-
-    newConfetti({
-      angle: 60,
-      spread: 55,
-      origin: { x: 0 },
-      colors,
-    });
-
-    newConfetti({
-      angle: 120,
-      spread: 55,
-      origin: { x: 1 },
-      colors,
-    });
+  format(value, currency = 'USD') {
+    return new Intl.NumberFormat('en-US', <any>{
+      style: 'currency',
+      currency: currency,
+      currencySign: 'accounting',
+      signDisplay: 'auto',
+    }).format(value);
   }
 }

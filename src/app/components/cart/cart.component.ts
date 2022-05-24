@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { cart } from '../../services/data/data';
 import { StoreService } from '../../services/shared/store.service';
+import { ModalController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -9,7 +11,11 @@ import { StoreService } from '../../services/shared/store.service';
 })
 export class CartComponent implements OnInit {
   products;
-  constructor(private store: StoreService) {}
+  constructor(
+    private store: StoreService,
+    private modalCtrl: ModalController,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.products = [...this.products, ...cart];
@@ -27,6 +33,20 @@ export class CartComponent implements OnInit {
   deleteFromCart(slug) {
     this.products = this.products.filter((product) => {
       return product.slug != slug;
+    });
+  }
+
+  total() {
+    return this.products.reduce((accumulator, item) => {
+      return accumulator + item.price * item.quantity;
+    }, 0);
+  }
+
+  checkOut() {
+    this.products = [];
+
+    this.modalCtrl.dismiss({
+      event: 'CHECKOUT',
     });
   }
 

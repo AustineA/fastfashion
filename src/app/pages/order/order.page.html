@@ -4,4 +4,26 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content [fullscreen]="true" color="appbg">
+  <section class="order">
+    <ion-list lines="full" mode="ios">
+      <ion-item *ngFor="let product of products">
+        <div slot="start" class="product-meta">
+          <div class="order-image">
+            <img [src]="product?.featuredImage" />
+          </div>
+          <div class="product-info">
+            <ion-label class="ion-text-wrap title"
+              >{{ product?.title }}</ion-label
+            >
+            <ion-label class="price">{{ format(product?.price) }}</ion-label>
+          </div>
+        </div>
+
+        <div class="qty-order-grid" slot="end">
+          <ion-label class="price">x{{ product?.quantity }}</ion-label>
+        </div>
+      </ion-item>
+    </ion-list>
+  </section>
+</ion-content>

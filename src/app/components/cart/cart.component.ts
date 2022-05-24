@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { cart } from '../../services/data/data';
-import { ModalController } from '@ionic/angular';
 import { StoreService } from '../../services/shared/store.service';
 
 @Component({
@@ -10,10 +9,7 @@ import { StoreService } from '../../services/shared/store.service';
 })
 export class CartComponent implements OnInit {
   products;
-  constructor(
-    private modalCtrl: ModalController,
-    private store: StoreService
-  ) {}
+  constructor(private store: StoreService) {}
 
   ngOnInit() {
     this.products = [...this.products, ...cart];

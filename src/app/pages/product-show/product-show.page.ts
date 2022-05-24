@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import SwiperCore, { Pagination, SwiperOptions, Autoplay } from 'swiper';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { wishlist, products, cart } from '../../services/data/data';
+import { products } from '../../services/data/data';
 import { HelperService } from '../../services/shared/helper.service';
 import { StoreService } from '../../services/shared/store.service';
 
@@ -20,6 +20,7 @@ export class ProductShowPage implements OnInit {
   };
   color: string;
   selectedSize: string;
+  wishList: any;
 
   quantity = 1;
 
@@ -28,7 +29,9 @@ export class ProductShowPage implements OnInit {
     private route: ActivatedRoute,
     private helper: HelperService,
     private store: StoreService
-  ) {}
+  ) {
+    this.getWishList();
+  }
 
   ngOnInit() {
     SwiperCore.use([Pagination, Autoplay]);
@@ -38,6 +41,12 @@ export class ProductShowPage implements OnInit {
   getProduct() {
     const slug = this.route.snapshot.params['slug'];
     this.product = products.find((item: any) => item?.slug == slug);
+  }
+
+  getWishList() {
+    this.store.loadWishList.subscribe((result) => {
+      this.wishList = result;
+    });
   }
 
   setSize(size) {
@@ -57,7 +66,7 @@ export class ProductShowPage implements OnInit {
     const color = this.product.fav ? 'light' : 'warning';
     this.helper.aToast(message, color);
 
-    wishlist.push(this.product);
+    this.wishList.unshift(this.product);
   }
 
   addToCart() {
@@ -71,7 +80,6 @@ export class ProductShowPage implements OnInit {
     const message = `${this.product.title} added to Cart`;
     this.helper.aToast(message, 'success');
 
-    // cart.push(item);
     this.store.setCart(item);
   }
 
@@ -91,5 +99,13 @@ export class ProductShowPage implements OnInit {
       currencySign: 'accounting',
       signDisplay: 'auto',
     }).format(value);
+  }
+
+  ionViewDidLeave() {
+    const fav = this.wishList.filter((item) => {
+      return item.fav == true;
+    });
+
+    this.store.updateWishList(fav);
   }
 }

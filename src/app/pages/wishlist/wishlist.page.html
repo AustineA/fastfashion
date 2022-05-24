@@ -1,9 +1,35 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>wishlist</ion-title>
+<ion-header class="ion-no-border">
+  <ion-toolbar color="appbg" mode="md">
+    <ion-title>Wishlist</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true" color="appbg">
+  <section class="wishlist">
+    <ion-list lines="full" mode="ios">
+      <ion-item *ngFor="let product of products" (click)="goTo(product?.slug)">
+        <div slot="start" class="product-meta">
+          <div class="wishlist-image">
+            <img [src]="product?.featuredImage" />
+          </div>
+          <div class="product-info">
+            <ion-label class="ion-text-wrap title"
+              >{{ product?.title }}</ion-label
+            >
+            <ion-label class="price">{{ format(product?.price) }}</ion-label>
+          </div>
+        </div>
 
+        <div class="qty-wishlist-grid" slot="end">
+          <div class="col-inner">
+            <ion-buttons slot="start" mode="md">
+              <ion-button mode="ios" (click)="removeFromList(product?.slug)">
+                <ion-icon name="remove-circle"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </section>
 </ion-content>

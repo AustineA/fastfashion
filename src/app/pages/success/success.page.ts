@@ -2,11 +2,11 @@ import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
 import * as confetti from 'canvas-confetti';
 
 @Component({
-  selector: 'app-order',
-  templateUrl: './order.page.html',
-  styleUrls: ['./order.page.scss'],
+  selector: 'app-success',
+  templateUrl: './success.page.html',
+  styleUrls: ['./success.page.scss'],
 })
-export class OrderPage implements OnInit {
+export class SuccessPage implements OnInit {
   constructor(private renderer2: Renderer2, private elementRef: ElementRef) {}
 
   ngOnInit() {}
@@ -35,5 +35,9 @@ export class OrderPage implements OnInit {
       origin: { x: 1 },
       colors,
     });
+  }
+
+  ionViewWillEnter() {
+    this.fire();
   }
 }

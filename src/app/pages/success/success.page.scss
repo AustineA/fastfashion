@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+canvas {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
